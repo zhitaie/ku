@@ -1,0 +1,58 @@
+body,p,pre,form,input,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dd,dt{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-style: normal;
+    font-weight: normal;
+    font-family: PingFangSC-Regular, sans-serif;
+}
+ul,li,ol,dl,dd,dt{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    border:0;
+}
+*{
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.over{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.overmore{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient: vertical;
+}
+body,html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    box-orient: vertical;
+}
+header{
+    flex:none;
+}
+.center-section{
+    flex:auto;
+    overflow: auto;
+}
+footer{
+    flex:none;
+}
+

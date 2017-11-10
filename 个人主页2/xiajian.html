@@ -1,0 +1,156 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网页上的下雨</title>
+    <style type="text/css">
+        <!--
+        body {
+            /*background-image: url(img/06.jpg);*/
+            /*background-size: 100% 100%;*/
+            /*background: #000;*/
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+
+        }
+        -->
+        body div img{
+            width: 100%;
+            height: 90%;
+            transform: rotate(-120deg);
+            /*transform: rotateY(60deg);*/
+        }
+        body div{
+            width: 130px;
+            height: 130px;
+            margin-left: 6px;
+        }
+        body img{
+
+        }
+        #a0{
+            width: 130px;
+            height: 130px;
+            /*display: none;*/
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+        }
+        @keyframes show {
+            0%{
+                opacity: 0;
+            }
+            20%{
+                opacity: .4;
+            }
+            30%{
+                opacity: .6;
+            }
+            50%{
+                opacity: 1;
+            }
+            70%{
+                opacity: .5;
+            }
+            90%{
+                opacity: .3;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        .showw{
+            animation:show .6s linear;
+        }
+        .disan1{
+            /*padding-top:60px;*/
+            width: 100%;
+            height: 100%;
+            background: url("img/djx.jpg");
+            background-size: 100% 100%;
+        }
+    </style></head>
+<img src='img/9999.png' alt='' id='a0'>
+<div class="disan1"></div>
+<body>
+<script language="JavaScript">
+    var pza=document.querySelector("#a0");
+    var pza1=document.querySelector("#a1");
+
+    var no = 5;//个数
+    var speed = 1;
+    var s, x, y, sn, cs;
+    var a, r, cx, cy;
+    var i;//i是优先级
+    clientW = document.body.clientWidth;//获取body的宽高
+    clientH = document.body.clientHeight;//获取body的宽高
+    x = new Array();//X轴
+    y = new Array();//Y轴
+    r = new Array();//
+    cx = new Array();//X轴的坐标
+    cy = new Array();//Y轴的坐标
+    s = 1.5;//速度
+    for (i = 0; i < no; ++ i) {
+        initRain();
+        document.write("<div id=dot"+ i +"  style='POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 1px; LEFT: 1px'><font color='#FFFFFF'><img src='img/雪花%20(13).png' alt=''></font></div>");
+    }
+    function initRain() {//初始化
+        a = 6;//偏移度
+        r[i] = 1;
+        sn = Math.sin(a);
+        cs = Math.cos(a);
+        cx[i] = Math.random() * clientW ;
+        cy[i] = Math.random() * clientH ;
+        x[i] = r[i] * sn + cx[i];
+        y[i] = cy[i];
+//        pza.style.display="none";
+        pza.style.left=-20+"px";
+
+    }
+    function makeRain() { //制造雨滴
+        r[i] = 1;
+        cx[i] = Math.random() * clientW + 1;
+        cy[i] = 1;
+        x[i] = r[i] * sn + cx[i];
+        y[i] = r[i] * cs + cy[i];
+    }
+    //    function pz() {
+    //        pza.style.top=x[i];
+    //        pza.style.left=y[i];
+    //    }
+    function updateRain() {  //更新雨滴
+        r[i] += s;
+        x[i] = r[i] * sn + cx[i];
+        y[i] = r[i] * cs + cy[i];
+    }
+    function raindropIE() { //雨滴
+        for (i = 0; i < no; ++ i) {
+            updateRain();
+            if ((x[i] <= 1) || (x[i] >= (clientW - 20)) || (y[i] >= (clientH - 20))) {
+//                pza.style.top=x[i];
+                console.log(x)
+//                for(let k=0;k<x.length;k++){
+                pza.style.left=x[i]+20+"px";
+                pza.classList.add("showw");
+                setTimeout(function () {
+                    pza.classList.remove("showw")
+                },550)
+//                    pza1.style.left=x[k]+20+"px";
+//                }
+
+                console.log(pza.style.left)
+                pza.style.display="block";
+                makeRain();
+                console.log(x[i])
+                clientW = document.body.clientWidth;
+                clientH = document.body.clientHeight;
+            }
+            document.all["dot"+i].style.top = y[i];
+            document.all["dot"+i].style.left = x[i];
+        }
+        setTimeout("raindropIE()", speed);
+    }
+    raindropIE();
+</script>
+</body>
+</html>

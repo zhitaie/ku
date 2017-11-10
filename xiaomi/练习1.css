@@ -1,0 +1,309 @@
+*{
+    list-style: none;
+    padding:0;
+    margin:0;
+
+}
+/*内容部分样式开始------------------------------*/
+/*.iinner-big-box{*/
+    /*width: 1226px;*/
+    /*height: 420px;*/
+    /*background: yellowgreen;*/
+    /*margin:0 auto;*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+/*}*/
+/*.iinner-mall-box{*/
+    /*width: 296px;*/
+    /*height:374px;*/
+    /*padding-top:45px;*/
+/*background: white;*/
+    /*position: relative;*/
+    /*overflow: hidden;*/
+/*}*/
+/*.iinner-item{*/
+    /*width: 2000px;*/
+    /*height: 337px;*/
+    /*transition: all 1s ;*/
+/*}*/
+/*.iinner-item>li{*/
+    /*width: 296px;*/
+    /*height: 420px;*/
+    /*background: white;*/
+    /*text-align: center;*/
+    /*float: left;*/
+/*}*/
+/*.pager-box{*/
+    /*width: 100%;*/
+    /*height: 10px;*/
+    /*position: absolute;*/
+    /*bottom:30px;*/
+    /*left: 0;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+/*}*/
+/*.pager-box li {*/
+    /*width: 6px;*/
+    /*height: 6px;*/
+    /*background: dimgrey;*/
+    /*border-radius: 50%;*/
+    /*margin:0 16px;*/
+/*}*/
+/*.pager-box li:hover {*/
+    /*background: orange;*/
+/*}*/
+/*.pager-box li.active{*/
+    /*background: white;*/
+    /*border:2px solid orange;*/
+/*}*/
+/*.iinner-mall-box>div{*/
+    /*width: 20px;*/
+    /*height: 48px;*/
+    /*background: rgba(0,0,0,0.3);*/
+    /*position: absolute;*/
+    /*top:50%;*/
+    /*margin-top:-24px;*/
+    /*text-align: center;*/
+    /*line-height: 48px;*/
+    /*color:white;*/
+    /*font-size: 18px;*/
+    /*opacity:0;*/
+    /*transition: all 1s;*/
+/*}*/
+/*.iinner-mall-box>div:hover{*/
+    /*cursor: pointer;*/
+/*}*/
+/*.pager-prev{*/
+    /*left: 0;*/
+/*}.pager-next{*/
+    /*right: 0;*/
+/*}*/
+/*.iinner-mall-box:hover>div{*/
+    /*opacity: 1;*/
+/*}*/
+/*!*内容中每一个小块的样式*!*/
+/*.iinner-big-box>div:nth-child(1){*/
+    /*border-top:1px solid  #ffac13;*/
+    /*color: #ffac13;*/
+/*}.iinner-big-box>div:nth-child(2){*/
+     /*border-top:1px solid  #83c44e;*/
+     /*color:#83c44e;*/
+/*}.iinner-big-box>div:nth-child(3){*/
+      /*border-top:1px solid  #e53935;;*/
+      /*color: #e53935;;*/
+/*}.iinner-big-box>div:nth-child(4){*/
+       /*border-top:1px solid  #2196f3;*/
+       /*color:#2196f3;*/
+/*}*/
+/*p{*/
+    /*display: block;*/
+    /*margin: 0;*/
+/*}*/
+/*.iinner-txt{*/
+    /*display: block;*/
+    /*width: 276px;*/
+    /*height: 24px;*/
+    /*line-height: 24px;*/
+    /*text-align: center;*/
+    /*margin-bottom: 18px;*/
+    /*font-size: 16px;*/
+/*}*/
+/*.iinner-box{*/
+    /*width:296px;*/
+    /*height: 337px;*/
+    /*text-align: center;*/
+    /*color: black;*/
+    /*position: relative;*/
+/*}*/
+/*.iinner-box p:nth-child(1){*/
+    /*font-size: 20px;*/
+    /*font-weight: 400;*/
+    /*line-height: 20px;*/
+/*}*/
+/*.iinner-box p:nth-child(2){*/
+    /*font-size: 12px;*/
+    /*line-height: 20px;*/
+    /*text-align: center;*/
+    /*color: #b0b0b0;*/
+    /*margin: 8px 48px 10px;*/
+/*}*/
+/*.iinner-box p:nth-child(3){*/
+    /*padding-bottom:15px;*/
+    /*font-size: 14px;*/
+/*}*/
+/*.iinner-box .iinner-img{*/
+    /*width: 216px;*/
+    /*height: 154px;*/
+    /*margin:0 auto;*/
+/*}*/
+/*.iinner-box .iinner-img img{*/
+    /*width: 216px;*/
+    /*height: 154px;*/
+/*}*/
+/*内容部分样式结束*/
+/*------------------------------------------*/
+/*!*明星单品开始*!*/
+/** {*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*list-style: none;*/
+/*}*/
+/*.sstar-bigbox {*/
+    /*width: 1226px;*/
+    /*height: 398px;*/
+    /*margin: 0 auto;*/
+/*}*/
+/*.sstar-top {*/
+    /*width: 100%;*/
+    /*height: 58px;*/
+/*}*/
+/*.sstar-title {*/
+    /*width: 150px;*/
+    /*height: 58px;*/
+    /*font-size: 22px;*/
+    /*font-weight: 200;*/
+    /*line-height: 58px;*/
+    /*color: #333;*/
+    /*float: left;*/
+/*}*/
+/*.sjiantou {*/
+    /*width: 72px;*/
+    /*height: 24px;*/
+    /*float: right;*/
+    /*margin-top: 17px;*/
+/*}*/
+/*.sjiantou li {*/
+    /*width: 34px;*/
+    /*height: 22px;*/
+    /*border: 1px solid #E0E0E0;*/
+    /*line-height: 22px;*/
+    /*text-align: center;*/
+    /*float: left;*/
+    /*color: #E0E0E0;*/
+    /*font-size: 18px;*/
+    /*font-weight: 600;*/
+/*}*/
+/*.sjiantou li.active:hover {*/
+    /*color:#ffac13;*/
+/*}*/
+/*.sjiantou li.active{*/
+    /*color:#B6B0B0;*/
+/*}*/
+/*.sjiantou li.sprev {*/
+    /*border-right: 0;*/
+/*}*/
+/*.sstar-bottom {*/
+    /*width: 1226px;*/
+    /*height: 340px;*/
+    /*overflow: hidden;*/
+/*}*/
+/*.sstar-bottom-inner {*/
+    /*width: 2466px;*/
+    /*height: 340px;*/
+    /*transition: all 2s;*/
+/*}*/
+/*.sstar-bottom-inner li {*/
+    /*width: 234px;*/
+    /*height: 300px;*/
+    /*background: #fafafa;*/
+    /*padding-top: 39px;*/
+    /*margin-right: 14px;*/
+    /*float: left;*/
+/*}*/
+/*.sstar-line1 {*/
+    /*border-top: 1px solid #ffac13;*/
+/*}*/
+/*.sstar-line2 {*/
+    /*border-top: 1px solid #83c44e;*/
+/*}*/
+/*.sstar-line3 {*/
+    /*border-top: 1px solid #2196f3;*/
+/*}*/
+/*.sstar-line4 {*/
+    /*border-top: 1px solid #e53935;*/
+/*}*/
+/*.sstar-line5 {*/
+    /*border-top: 1px solid #00c0a5;*/
+/*}*/
+
+/*.sstar-bottom-inner li#del-rmargin {*/
+    /*margin-right: 0;*/
+/*}*/
+
+/*img {*/
+    /*width: 160px;*/
+    /*height: 160px;*/
+    /*margin-left: 37px;*/
+    /*margin-bottom: 34px;*/
+/*}*/
+/*.spp1 {*/
+    /*color: #212121;*/
+    /*text-align: center;*/
+    /*margin-bottom: 8px;*/
+    /*font-size: 14px;*/
+
+/*}*/
+/*.spp2 {*/
+    /*color: #b0b0b0;*/
+    /*text-align: center;*/
+    /*margin-bottom: 12px;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.spp3 {*/
+    /*color: #ff6709;*/
+    /*text-align: center;*/
+    /*font-size: 14px;*/
+/*}*/
+/*!*明星单品结束*!*/
+/*---------------------------------------*/
+/*无缝轮播*/
+.banner{
+    width: 1200px;
+    height: 460px;
+    background: yellow;
+    margin:50px auto;
+    overflow: hidden;
+    position:relative;
+}
+.banner-box{
+    width: 9600px;
+    height: 460px;
+    transition:all 2s;
+    margin-left: -1200px;
+}
+.banner-box li{
+    width: 1200px;
+    height: 460px;
+    float: left;
+}
+.banner-box li a{
+    display: block;
+}
+.banner-box li img{
+    width: 1200px;
+    height: 460px;
+}
+.bprev,.bnext{
+    width: 30px;
+    height: 70px;
+    background: rgba(0,0,0,0.3);
+    line-height: 70px;
+    text-align: center;
+    color:white;
+    position:absolute;
+    top:50%;
+    margin-top:-35px;
+    font-size: 30px;
+    cursor: pointer;
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+}
+.bprev{
+    left:0;
+}
+.bnext{
+    right:0;
+}

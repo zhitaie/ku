@@ -1,0 +1,367 @@
+/*头部开始*/
+.header{
+    width: 100%;
+    height: 155px;
+}
+.header .top{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    background: #252525;
+    color: #fff;
+}
+.topmain{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.top .left{
+    width: 300px;
+    height: 100%;
+
+    float: left;
+}
+.top .right{
+    width: 300px;
+    height: 100%;
+    float: right;
+}
+.top .right li{
+    float: right;
+}
+.top .right li a{
+    color: #fff;
+}
+.top .right li span{
+    margin: 0 5px;
+}
+
+/*导航开始*/
+.nav{
+    width: 100%;
+    height: 105px;
+    background: #fff;
+}
+.navmain{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    line-height: 100%;
+}
+.navmain .left{
+    width: 250px;
+    height: 100%;
+    padding-top: 25px;
+    float: left;
+}
+.navmain .right{
+    width: 900px;
+    height: 100%;
+    margin-left: 45px;
+    padding-top: 25px;
+    float: left;
+}
+.navmain .right li{
+    width: 112px;
+    height: 55px;
+    float: left;
+    text-align: center;
+    line-height: 100%;
+    position: relative;
+}
+.navmain .right>li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    line-height: 55px;
+}
+.navmain .right>li:hover a{
+    color: #fd3f01;
+}
+.angle1{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    border-top: 1px solid #fd3f01;
+    border-right: 1px solid #fd3f01;
+    display: none;
+}
+.angle2{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #fd3f01;
+    border-left: 1px solid #fd3f01;
+    display: none;
+}
+.navmain .right>li.active a{
+    color: #fd3f01;
+}
+.navmain .right>li.active div{
+    display: block;
+}
+.navmain .right>li:hover div{
+    display: block;
+}
+.navmain .right>li .secnav{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 9999;
+    display: none;
+}
+.navmain .right>li:hover .secnav{
+    display: block;
+}
+.navmain .right>li .secnav li{
+    width: 100px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 14px;
+    float: left;
+    margin: 8px 6px;
+    background: #fff;
+}
+.navmain .right>li .secnav li:hover{
+    background: #fd3f01;
+}
+.navmain .right>li .secnav li a{
+    color: #000;
+    line-height: 44px;
+}
+.navmain .right>li .secnav li:hover a{
+    color: #fff;
+}
+
+/*轮播图*/
+.bannerbox{
+    width: 100%;
+    height: 631px;
+    position: relative;
+}
+.bannerinner{
+    width: 100%;
+    height: 100%;
+    /*position: relative;*/
+}
+.banner{
+    width: 100%;
+    height: 100%;
+}
+.banner li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.banner li.active{
+    display: block;
+    z-index: 1;
+}
+.banner li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.banner li a img{
+    width: 100%;
+    height: 100%;
+}
+.dianbox{
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -50px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 999;
+}
+.dianbox li{
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+}
+.dianbox li.active{
+    border: 5px solid #fd3f01;
+}
+.topborder{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 34px;
+    background: url("../img/by.png") repeat;
+}
+.bottomborder{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 34px;
+    background: url("../img/by2.png") repeat;
+}
+
+/*联系我们*/
+.about{
+    width: 100%;
+    height: auto;
+}
+.aboutinner{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 25px 0 30px 0;
+}
+.title{
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #252525;
+}
+.topright{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 22px;
+    height: 17px;
+    border-top: 2px solid #fd3f01;
+    border-right: 2px solid #fd3f01;
+}
+.bottomleft{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 22px;
+    height: 17px;
+    border-bottom: 2px solid #fd3f01;
+    border-left: 2px solid #fd3f01;
+}
+.about-nav{
+    width: 100%;
+    height: 20px;
+    margin: 20px 0;
+    background: url("../img/c1.png") no-repeat;
+}
+.about-nav span{
+    display: inline-block;
+    margin-left: 25px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #252525;
+}
+.about-nav span a{
+    color: #fd3f01;
+    font-size: 14px;
+}
+.about-title{
+    width: 100%;
+    height: 42px;
+    margin-bottom: 30px;
+}
+.about-title li{
+    width: 132px;
+    height: 42px;
+    margin-right: 20px;
+    border-radius: 21px;
+    border: 1px solid #b0b0b0;
+    float: left;
+}
+.about-title li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 21px;
+    color: #fd3f01;
+    text-align: center;
+    line-height: 38px;
+}
+.about-title li:hover{
+    border: 0;
+}
+.about-title li:hover a{
+    color: #fff;
+    background: #fd3f01;
+}
+.about p{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
+/*底部*/
+.footer{
+    width: 100%;
+    height: 150px;
+    background: #252525;
+    color: #fff;
+    font-size: 16px;
+}
+.footer .top{
+    width: 100%;
+    height: 34px;
+    margin-bottom: 20px;
+    background: url("../img/by.png") top repeat;
+}
+.footer .bottom{
+    width: 1200px;
+    height: 63px;
+    margin: 30px auto;
+}
+.footer .left{
+    width: 242px;
+    height: 63px;
+    float: left;
+}
+.footer .right p{
+    height: 63px;
+    line-height: 63px;
+    margin-left: 70px;
+    float: left;
+    color: #fff;
+    font-size: 16px;
+}
+
+/*totop*/
+.totop{
+    width: 120px;
+    height: 50px;
+    background: rgb(251, 194, 25);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    cursor: pointer;
+    /*display: none;*/
+    z-index: 99999;
+}
+
+
+
+
+
+

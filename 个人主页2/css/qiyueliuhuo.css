@@ -1,0 +1,57 @@
+body {
+    /*background-image: url(/jscss/demoimg/201405/2.jpg);*/
+    background: #000;
+    overflow: hidden;
+
+}
+-->
+#qiu{
+    width: 130px;
+    height: 130px;
+}
+.tbt img{
+    width: 100%;
+    height: 100%;
+    transform: rotate(20deg);
+    /*transform: rotateY(60deg);*/
+}
+.tbt div{
+    width: 130px;
+    height: 130px;
+    margin-left: 6px;
+}
+
+#a0{
+    width: 130px;
+    height: 130px;
+    /*display: none;*/
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+}
+@keyframes show {
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: .4;
+    }
+    30%{
+        opacity: .6;
+    }
+    50%{
+        opacity: 1;
+    }
+    70%{
+        opacity: .5;
+    }
+    90%{
+        opacity: .3;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.showw{
+    animation:show .8s linear;
+}

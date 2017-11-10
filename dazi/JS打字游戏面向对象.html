@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body{
+            /*width:100%;*/
+            height: 100%;
+            padding: 0;
+            margin: 0;
+
+        }
+        .zong{
+            width: 1200px;
+            height: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+            background: url("img/124.jpg");
+            background-size: 100% 100%;
+        }
+        .nei{
+            width: 1000px;
+            height: 900px;
+            /*background: green;*/
+            float: left;
+            /*margin-left:80px;*/
+            position: relative;
+        }
+        .kong{
+            width: 200px;
+            height: 900px;
+            /*background: goldenrod;*/
+            /*opacity: .4;*/
+            float: left;
+            border-radius: 30px;
+            padding-top: 150px;
+        }
+        .kuaia{
+            width: 150px;
+            height: 150px;
+            /*border: 1px solid red;*/
+            position: absolute;
+            left: 0;
+            top:0;
+            /*background: #aad20f ;*/
+            text-align: center;
+            line-height: 150px;
+            font-weight: 800;
+            color: red;
+            font-size: 60px;
+            overflow: hidden;
+            font-family: 宋体;
+            font-weight: 600;
+        }
+        .ha{
+            width: 100%;
+            /*height: 60px;*/
+            text-align: center;
+            line-height: 60px;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 30px;
+            background: gold;
+        }
+        .ha div{
+            width: 100%;
+            height: 40px;
+        }
+        .shu{
+            width: 50px;
+            height: 30px;
+            margin: 0 auto;
+            /*background: #fff;*/
+        }
+    </style>
+</head>
+<body>
+<div class="zong">
+    <div class="nei"></div>
+    <div class="kong">
+        <div class="ha">
+            <div class="fen">得分</div>
+            <div class="shu">0</div>
+        </div>
+        <div class="ha">
+            <div class="guan">关卡</div>
+            <div class="qia">1</div>
+        </div>
+        <div class="ha">
+            <div class="sheng">生命</div>
+            <div class="ming">5</div>
+        </div>
+        <div class="kai ha">开始</div>
+        <div class="guana ha">暂停</div>
+
+    </div>
+</div>
+</body>
+<script>
+    var n=11;
+    var sss=document.querySelector(".kong")
+    var kai=true;
+    setInterval(function () {
+         if(kai){
+             n++;
+         }else{
+             n--
+         }
+             sss.style.paddingTop=n*1.5+"px";
+         if(n>260||n<10) {
+             kai=!kai
+         }
+     },50)
+</script>
+<script>
+    var fenshu=document.querySelector('.shu')
+    var neir=document.querySelector('.nei')
+    var guan=document.querySelector('.qia')
+    var ming=document.querySelector('.ming')
+    var kaishi=document.querySelector('.kai')
+    var zanting=document.querySelector('.guana')
+var hama=true;
+    zanting.onclick=function () {
+
+        if(hama){
+            clearInterval(abc.st)
+
+            console.log(hama)
+        }else{
+            abc.move();
+
+        }
+        hama= !hama;
+    }
+    class Game {
+        constructor(left,fen,guan,ming){
+            this.left=left;
+            this.fenshu=fen;
+            this.guan=guan
+            this.yunfen=0;
+            this.num=3;
+            this.obj={};
+            this.height=window.innerHeight;
+            this.speed=5
+            this.yuanguan=1;
+            this.yuanming=5;
+            this.ming=ming;
+            this.st=null;
+            this.flag=true;
+        }
+
+        stat(){
+            for(let i=0;i<this.num;i++){
+                this._createLetter();
+            }
+            this.move();
+            this.keydown();
+        }
+        _createLetter(){
+            let newdiv=document.createElement('div')
+            newdiv.className='kuaia';
+            do{
+                var sjs=Math.floor(Math.random()*26+65);
+                var sjss=String.fromCharCode(sjs);
+            }while(this.obj[sjss])
+            do{
+                var zqj=Math.random()*900;
+            }while(this.fn(zqj))
+            newdiv.style.left=zqj+"px";
+            newdiv.style.backgroundImage="url('img/xx2.png')";
+//            newdiv.style.backgroundOrigin="center center"
+            newdiv.style.backgroundSize="100% 100%"
+            let shang=Math.random()*100;
+            this.obj[sjss]={left:zqj,ele:newdiv,top:shang};
+            newdiv.style.top=shang+"px";
+            newdiv.innerHTML=sjss;
+            neir.appendChild(newdiv)
+        }
+    fn(left) {
+        for(let i in this.obj){
+            if(left+100>this.obj[i].left&&left-100<this.obj[i].left){
+                console.log(left)
+                return true;
+            }
+        }
+    }
+        move(){
+            this.st=setInterval(function fnn() {
+                for(let i in this.obj){
+                    let top=this.obj[i].top;
+                    top+=this.speed;
+                    this.obj[i].ele.style.top=top+"px";
+                    this.obj[i].top=top;
+//                    console.log(top)
+                    if(top>this.height){
+                        this.yuanming--;
+                        this.ming.innerHTML=this.yuanming;
+                        this.left.removeChild(this.obj[i].ele);
+                        delete this.obj[i];
+                        this._createLetter();
+                        if(this.yuanming===-1){
+                            this.gemeover();
+                        }
+                    }
+                }
+            }.bind(this),50)
+        }
+        gemeover(){
+            alert(`游戏结束了，你的得分是${this.yunfen},加油！`);
+            this.left.innerHTML="";
+            this.obj={};
+            this.fenshu.innerHTML=0;
+            this.yunfen=0;
+            this.guan.innerHTML=1;
+            this.yuanguan=0;
+            this.ming.innerHTML=5;
+            this.yuanming=5;
+            clearInterval(this.st);
+            this.flag=true;
+        }
+        keydown(){
+            document.onkeydown=function (e) {
+                let kc=e.keyCode;
+                let zimu=String.fromCharCode(kc);
+                console.log(zimu)
+                if(this.obj[zimu]){
+                    this.left.removeChild(this.obj[zimu].ele);
+                    delete this.obj[zimu];
+                    this._createLetter();
+                    this.yunfen++;
+                    this.fenshu.innerHTML=this.yunfen;
+                    if(this.fenshu.innerHTML%10===0){
+                        this.nandu();
+                    }
+                }
+            }.bind(this)
+        }
+        nandu(){
+            this.yuanguan++;
+            this.guan.innerHTML=this.yuanguan;
+            if(this.yuanguan<3){
+                this._createLetter();
+            }else{
+                this.speed++;
+            }
+        }
+    }
+    let abc=new Game(neir,fenshu,guan,ming)
+    kaishi.onclick=function () {
+        if(abc.flag){
+            abc.flag=false;
+            abc.stat();
+        }
+    }
+</script>
+</html>

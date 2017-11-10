@@ -1,0 +1,242 @@
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>跳舞人</title>
+</head>
+<body>
+<SCRIPT>
+    var object1=document.querySelector(".object1")
+    s=250
+    sw=eval(screen.width/2-120)
+    tl = new Array(
+            "   o\n"+
+            "  /|\\\n"+
+            " */ \\*\n",
+
+            "   o_\n"+
+            "  \<| *\n"+
+            "  *\>\\\n",
+
+            "  _o/*\n"+
+            " * |\n"+
+            "  / \\\n",
+
+            " *\o_\n"+
+            "  /  *\n"+
+            " \<\\\n",
+
+            "  _o/*\n"+
+            " * |\n"+
+            "  / \\\n",
+
+            " *\\c/*\n"+
+            "   )\n"+
+            "  / \>\n",
+
+            "     *\n"+
+            "  \\__/c\n"+
+            "   \> \\*\n",
+
+
+            "   __/\n"+
+            "    (o_*\n"+
+            "     \\*\n",
+
+
+            "      \\ /\n"+
+            "       |\n"+
+            "     */o\\*\n",
+
+            "       \\_\n"+
+            "       (\n"+
+            "     */o\\*\n",
+
+            "        \<_\n"+
+            "      __(\n"+
+            "     * o|*\n",
+
+
+            "         /_\n"+
+            "      __(\n"+
+            "     * o|*\n",
+
+            "          ___\n"+
+            "       *\/ \>\n"+
+            "       o|*\n",
+
+
+            "          *\n"+
+            "         o|_/\n"+
+            "        */  \\\n",
+
+
+
+            "         _o/*\n"+
+            "        * |\n"+
+            "         / \\\n",
+
+
+            "        *\\o/*\n"+
+            "          |\n"+
+            "         / \\\n",
+
+            "         c/*\n"+
+            "         \<\\\n"+
+            "         */\\\n",
+
+            "         c__\n"+
+            "         \<\ *\n"+
+            "         */\\\n",
+
+            "         c__\n"+
+            "         /\ *\n"+
+            "        * /\>\n",
+
+            "          c/*\n"+
+            "         /(__\n"+
+            "        * /\n",
+
+            "        __o/*\n"+
+            "        * (__\n"+
+            "          \<\n",
+
+            "          __o_\n"+
+            "         * /  *\n"+
+            "          \<\\\n",
+
+            "         *_o_\n"+
+            "           | *\n"+
+            "          \< \\\n",
+
+            "         *_c_*\n"+
+            "           |\n"+
+            "           \>\\\n",
+
+            "         *_c_*\n"+
+            "           |__\n"+
+            "           \>\n",
+
+            "         *_c_*\n"+
+            "         __|__\n"+
+            "\n",
+
+            " \n"+
+            "         *_c_*\n"+
+            "         __)__    \n",
+
+            " \n"+
+            "         *\\c/*\n"+
+            "         __)__\n",
+
+
+            "           o__*\n"+
+            "           / *\n"+
+            "          \>\\\n",
+
+
+            "        *\\o/*\n"+
+            "          (\n"+
+            "         / \>\n",
+
+
+            "         *\n"+
+            "        o\\__/\n"+
+            "        */ \<\n",
+
+
+            "       \\__\n"+
+            "     *_o)\n"+
+            "      */\n",
+
+            "     \\ /\n"+
+            "      |\n"+
+            "    */o\\*\n",
+
+            "     _/\n"+
+            "      )\n"+
+            "    */o\\*\n",
+
+            "     _\>\n"+
+            "      )__\n"+
+            "    *|o *\n",
+
+
+            "     _\\\n"+
+            "      )__\n"+
+            "    *|o *\n",
+
+            " ___\n"+
+            "   \< \\*\n"+
+            "   *|o\n",
+
+            "   *\n"+
+            " \\_|o\n"+
+            " /  \\*\n",
+
+            " *\\o__\n"+
+            "   |  *\n"+
+            "  / \\\n",
+
+
+            "   o\n"+
+            "  /|\\\n"+
+            " */ \\*\n",
+
+
+            "   o_\n"+
+            "  \<| *\n"+
+            "  *\>\\\n",
+
+            "  _o/*\n"+
+            " * |\n"+
+            "  / \\\n",
+
+            " *\o_\n"+
+            "  /  *\n"+
+            " \<\\\n",
+
+            "  _o/*\n"+
+            " * |\n"+
+            "  / \\\n",
+
+            " *\\c/*\n"+
+            "   )\n"+
+            "  / \>\n"
+    );
+    var x=0;
+    var xx
+    function place(){
+        if (document.layers){
+            document.object1.document.write("<pre>"+tl[0]+"</pre>");
+            document.object1.document.close()
+            document.object1.left=sw}
+        if (document.all){
+            object1.innerHTML="<pre>"+tl[0]+"</pre>"
+            object1.style.pixelLeft=sw
+        }
+    }
+    tick()
+    function tick(p) {
+        clearTimeout(xx)
+        if (document.layers){
+            object1.document.write("<pre>"+tl[x]+"</pre>");
+            object1.document.close()
+            object1.left=sw}
+        if (document.all){
+            object1.innerHTML="<pre>"+tl[x]+"</pre>"
+            object1.style.pixelLeft=sw
+        }
+        x++;
+        if (x != 45){
+            xx= setTimeout("tick()",s);
+        }
+        else{x = 0;xx=setTimeout("tick(1)",s)}
+    }
+</SCRIPT>
+<FORM><INPUT onclick=javascript:s=50 type=button value="加速"> <INPUT onclick=javascript:s=500 type=button value="减速"> <INPUT onclick=javascript:s=150 type=button value=正常速度><BR><BR><INPUT onclick=javascript:tick(1) type=button value=开始跳舞>
+    <INPUT onclick=javascript:clearTimeout(xx) type=button value=停止>
+</FORM>
+<DIV class="object1"
+     style="LEFT: 25px; POSITION: absolute; TOP: 200px; Z-INDEX: 2">111</DIV>
+</body>
+</html>

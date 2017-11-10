@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="toducss/swiper.css">
+    <link rel="stylesheet" href="toducss/index.css">
+    <style>
+        .srk ul{
+            /*background-color: none;*/
+            background: url("bg.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="3.JPG" alt=""></div>
+            <div class="swiper-slide">todo功能2</div>
+            <div class="swiper-slide">todo功能三</div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="czk">
+        <div class="no active">未完成</div>
+        <div class="ok">已完成</div>
+    </div>
+    <div class="srk">
+        <ul>
+        </ul>
+    </div>
+    <div class="addk">添加</div>
+</div>
+<div class="mask"></div>
+<div class="hama">
+<textarea name="" id="srbox"></textarea>
+    <i class="iconfont ha">&#xe654;</i>
+<input type="button" value="提交" class="tj">
+</div>
+</body>
+<script src="todujs/jquery.js"></script>
+<script src="todujs/swiper.min.js"></script>
+<script src="todujs/hammer.js"></script>
+<script src="todujs/rem.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        // direction: 'vertical',
+        loop: true,
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        
+    });
+    $(".addk").click(function () {
+        $(".main").css("filter","blur(2px)")
+                .next()
+                .show();
+        $("#srbox").delay(300)
+                .queue(function () {
+                    $(".tj").addClass("show").dequeue()
+                    $(this).addClass("show").dequeue()
+                    $("#srbox")[0].focus();
+                });
+        $(".ha").delay(900).queue(function () {
+            $(".ha").css("display","block").dequeue();
+        })
+    })
+
+    $(".tj").click(function () {
+        var text=$("#srbox").val();
+        if(text==""){
+            return
+        }
+        $("#srbox").val("");
+        var time=new Date().getTime();
+        var date=Getdata();
+        var color=Getcolor();
+        date.push({con:text,time:time,isStar:0,isDone:0,color});
+        saveData(date);
+        reWrite()
+        $(".mask").css("display","none");
+        $(".main").css("filter","none");
+        $("#srbox").removeClass("show");
+        $(".tj").removeClass("show");
+        $(".ha").css("display","none")
+    })
+    var colorArr=[0,3,6,9,"c","f"]
+    function Getcolor() {
+        var str="#";
+        for(var i=0;i<3;i++){
+            var pos=Math.floor(Math.random()*colorArr.length);
+            str+=colorArr[pos];
+        }
+        return str;
+    }  //随机颜色
+    function Getdata() {
+        return localStorage.todu?JSON.parse(localStorage.todu):[];
+    }  //
+    function saveData(date) {
+        localStorage.todu=JSON.stringify(date)
+    }//获取数据
+    function reWrite() {      //重绘函数
+        var data=Getdata();
+        $(".srk ul").empty();
+        var str="";
+        data.reverse();
+        $.each(data,function (index,val) {
+            if(fb=="no") {
+            if(val.isDone==0){
+                var sj=Getda(val.time)
+                console.log(sj)
+                var sfm=getXiao(val.time);
+                console.log(val.color)
+                 str += "<li style='background:"+val.color+"' id="+index+"><span class='sp1'>"+sj+"</span><span class='sp3'>"+val.con+ "</span><div class='right'>完成</div><i class='iconfont'>&#xe645;</i><span class='sp2'>"+sfm+"<br></span></li>";
+            }
+            }else if(fb=="do"){
+                if(val.isDone==1){
+                    str += "<li style='background:#ccc' id="+index+"><span class='sp1'>"+Getda(val.time)+"</span><span class='sp3'>"+val.con+ "</span><div class='del'>删除</div><i class='iconfont'>&#xe645;</i><span class='sp2'>"+getXiao(val.time)+"<br></span></li>";
+                }
+            }
+        });
+        $(".srk ul").html(str);
+        addEvent()
+        $(".ha").css("display","none");
+//        myIscroll.refresh()
+    }
+    reWrite()
+    function Getda(ms) {
+        var date=new Date();
+        date.setTime(ms);
+        var year=addZero(date.getFullYear());
+        var month=addZero(date.getMonth()+1);
+        var day=addZero(date.getDate());
+        return year+"-"+month+"-"+day;
+    }
+    function addZero(num) {
+        return num<10?"0"+num:num
+    }
+    function getXiao(ms) {
+        var date=new Date();
+        date.setTime(ms);
+        var hours=addZero(date.getHours());
+        var fen=addZero(date.getMinutes());
+        var miao=addZero(date.getSeconds());
+        return hours+":"+fen+":"+miao
+    }
+    var max=$(window).width()*0.3;
+    function addEvent() {
+        var lis = $(".srk ul li");
+        lis.each(function (index, ele) {
+            var hammer = new Hammer(ele);
+            var mx;
+            var state = "start"
+            hammer.on("panstart", function (e) {
+                $(ele).css("transition", "none")
+            })
+            hammer.on("pan", function (e) {
+                mx = e.deltaX;
+                if (state === "start") {
+                    if (mx > 0) {
+                        return;
+                    }
+                } else {
+                    if (mx < 0) {
+                        return;
+                    }
+                    mx = mx - max;
+                }
+
+                if (Math.abs(mx) > max) {
+                    return;
+                }
+                $(ele).css("transform", "translate3d(" + mx + "px,0,0)")
+            })
+            hammer.on("panend", function () {
+                $(ele).css("transition", "all .5s");
+                if (Math.abs(mx) > max / 2) {
+                    state = "end"
+                    $(ele).css("transform", "translate3d(" + (-max) + "px,0,0)")
+                } else {
+                    state = "start"
+                    $(ele).css("transform", "translate3d(0,0,0)")
+                }
+            })
+        })
+    }
+    $(".srk").on("click",".right",function () {
+        var data=Getdata();
+        var index=$(this).parent().attr("id")
+        data.reverse();
+//        console.log(data[index])
+        data[index].isDone=1;
+//        console.log(data[index].isDone)
+        data.reverse();
+        saveData(data);
+        reWrite()
+    });
+    var fb="no";
+    reWrite();
+    $(".czk div").click(function () {
+        $(".czk div").removeClass("active").filter(this).addClass("active")
+        if($(".no").hasClass("active")){
+            fb="no";
+        }else{
+            fb="do";
+        }
+        reWrite();
+    });
+    $(".ha").click(function () {
+        reWrite();
+        $(".mask").css("display","none");
+        $(".main").css("filter","none");
+        $("#srbox").removeClass("show");
+        $(".tj").removeClass("show");
+    })
+    $('.srk').on('click', '.del', function () {
+        console.log(1)
+        var data = Getdata();
+        var index = $(this).parent().attr('id');
+        data.reverse();
+        data.splice(index, 1)//删除
+        data.reverse();
+        saveData(data);
+        reWrite();
+    })
+    $('.srk').on('click', '.sp3', function () {
+        var text = $(this).html();
+        $('.main').css('filter', 'blur(2px)');
+        $('.mask')
+                .show()
+                .find('.item')
+                .delay(500)
+                .queue(function () {
+                    $(this)
+                            .addClass('show')
+                            .dequeue();
+                    $('#srbox').val(text);
+                })
+    })
+</script>
+</html>

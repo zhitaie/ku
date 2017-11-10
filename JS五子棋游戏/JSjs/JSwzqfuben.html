@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .caont{
+            width: 560px;
+            height: 560px;
+            position: absolute;
+            left:0;
+            top:0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background: #CCCCCC;
+            display: none;
+        }
+        @keyframes  ha{
+            0%{
+                transform: scale(0.1,0.1);
+            }
+            100%{
+                transform: scale(1,1);
+            }
+        }
+        .ha{
+            display: block;
+            animation: ha 1.5s cubic-bezier(0.250,0.250,0.630,1.650);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="button" value="开始游戏" id="start">
+    游戏模式玩家对战<input type="radio" value="" name="moshi">
+    人机对战<input type="radio" value="" name="moshi">
+    <input type="button" value="重新开始">
+    <div class="caont">
+        <canvas width="560" height="560"></canvas>
+    </div>
+</div>
+</body>
+<script>
+    let rong=document.querySelector(".caont")
+    let dian=document.querySelector("#start")
+    let pos={}
+    let flag=true;
+
+    dian.onclick=function () {
+        rong.classList.add("ha")
+    }
+    let canvas=document.querySelector("canvas")
+    let cj=canvas.getContext("2d");
+    let w=40;
+    huaxian();
+    function huaxian() {
+        cj.clearRect(0,0,560,560)
+        cj.beginPath();
+
+        for(let i=0;i<14;i++){
+            cj.moveTo(0,w*i+.5);
+            cj.lineTo(560,w*i+.5);
+            cj.moveTo(w*i+.5,0);
+            cj.lineTo(w*i+.5,560);
+        }
+        cj.rect(0.5,0.5,559,559)
+        cj.stroke();
+        yuan(3,3)
+        yuan(7,7)
+        yuan(3,11)
+        yuan(11,3)
+        yuan(11,11)
+
+        function yuan(x,y) {
+            cj.save();
+        cj.beginPath()
+        cj.translate(x*w,y*w);
+        cj.arc(0,0,6,0,2*Math.PI);
+        cj.fill();
+        cj.stroke();
+            cj.restore()
+    }
+    }
+    function j(x,y) {
+        return x+"_"+y;
+    }
+    function qizi(x,y,color) {
+        cj.save();
+        cj.fillStyle=color;
+        cj.translate(x*w,y*w);
+        cj.beginPath();
+        cj.arc(0,0,15,0,2*Math.PI);
+        cj.fill();
+        cj.restore();
+        pos[j(x,y)]=color;
+    }
+    canvas.onclick=function (e) {
+        let x=Math.round(e.offsetX/w);
+        let y=Math.round(e.offsetY/w);
+        if(pos[j(x,y)]){
+            return
+        }
+        if(flag){
+            flag=false;
+            qizi(x,y,"#000");
+            if(hama(x,y,"#000")===5){
+                alert("黑棋赢了！")
+            }
+        }else{
+            qizi(x,y,"#fff")
+            flag=true;
+            if(hama(x,y,"#fff")===5){
+                alert("白棋赢了！")
+            }
+        }
+
+    }
+
+
+    function hama(x,y,color) {
+        let row=1;
+        let i=1;
+        while(pos[j(x+i,y)]==color){
+            row++;
+            i++;
+        }
+        i=1
+        while(pos[x-i,y]==color){
+            row++;
+            i++;
+        }
+        i=1;
+        let col=1;
+        while(pos[j(x,y+i)]==color){
+            col++;
+            i++;
+        }
+        i=1;
+        while(pos[j(x,y-i)]==color){
+            col++;
+            i++;
+        }
+        i=1;
+        let x1=1;
+        while (pos[j(x+i,y+i)]===color){
+            x1++;
+            i++;
+        }
+        i=1;
+        while(pos[j(x-i,y-i)]===color){
+            x1++;
+            i++;
+        }
+        i=1;
+        let x2=1;
+        while(pos[j(x-i,y+i)]===color){
+            x2++;
+            i++;
+        }
+        i=1;
+        while(pos[j(x+i,y-i)]==color){
+            x2++;
+            i++;
+        }
+        return Math.max(row,col,x1,x2)
+    }
+</script>
+</html>

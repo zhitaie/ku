@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            display: none;
+            background-color: #ccc;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #999;
+        }
+        .show{
+            display: block;
+        }
+        .active{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<button class="active">111</button>
+<button>222</button>
+<button>333</button>
+<div class="show">div1</div>
+<div>div2</div>
+<div>div3</div>
+</body>
+<script>
+//    for(var i=0;i<5;i++) {
+//        (function (i) {
+//            setTimeout(function () {
+//                console.log("var" + i);
+//            })
+//        })(i)
+//    }
+
+
+
+
+var tabs = document.getElementsByTagName('button');
+var divs = document.getElementsByTagName('div');
+
+for(let i=0;i<tabs.length;i++){
+    console.log(i)
+
+    tabs[i].onclick = function(){
+        console.log(i)
+        for(var j=0;j<tabs.length;j++){
+            divs[j].className = '';
+            tabs[j].className = '';
+        }
+        this.className = 'active';
+        divs[i].className = 'show';
+    }
+}
+</script>
+</html>
